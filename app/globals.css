@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #06110c;
+  --bg-secondary: #0b1711;
+  --bg-tertiary: #102119;
+  --surface-glass: rgba(233, 248, 236, 0.08);
+  --surface-glass-strong: rgba(233, 248, 236, 0.13);
+  --surface-panel: rgba(10, 23, 16, 0.76);
+  --surface-panel-strong: rgba(14, 31, 21, 0.9);
+  --border-soft: rgba(233, 248, 236, 0.12);
+  --border-strong: rgba(184, 240, 207, 0.24);
+  --text-primary: #eef8f1;
+  --text-secondary: #d1dfd4;
+  --text-muted: #8aa091;
+  --mint: #b8f0cf;
+  --sage: #84b998;
+  --emerald: #6fd2a2;
+  --cyan-green: #7bd5c9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-primary);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top, rgba(127, 178, 142, 0.18), transparent 40%),
+    radial-gradient(circle at 20% 20%, rgba(111, 210, 162, 0.1), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(123, 213, 201, 0.08), transparent 24%),
+    linear-gradient(180deg, #07120d 0%, #06110c 52%, #091610 100%);
+  color: var(--text-primary);
+  font-family:
+    "Plus Jakarta Sans",
+    "Avenir Next",
+    "Segoe UI",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(111, 210, 162, 0.35);
+  color: #f7fff8;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+      var(--surface-glass);
+    border: 1px solid var(--border-soft);
+    box-shadow:
+      0 30px 120px rgba(3, 12, 8, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+  }
+
+  .glass-card {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+      rgba(15, 31, 22, 0.78);
+    border: 1px solid rgba(233, 248, 236, 0.1);
+    box-shadow:
+      0 20px 70px rgba(4, 12, 8, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
+  .paper-surface {
+    background:
+      linear-gradient(180deg, rgba(244, 249, 244, 0.98), rgba(231, 240, 233, 0.94)),
+      #f1f6f2;
+    border: 1px solid rgba(23, 49, 38, 0.08);
+    box-shadow:
+      0 30px 80px rgba(4, 12, 8, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 md:px-8 xl:px-10;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl;
+  }
+
+  .body-copy {
+    @apply text-base leading-7 text-[color:var(--text-secondary)] sm:text-lg;
+  }
+
+  .eyebrow {
+    @apply mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--mint)];
+  }
+
+  .ambient-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 100px 100px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 92%);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 24px rgba(184, 240, 207, 0.18);
+  }
+
+  .subtle-ring {
+    box-shadow:
+      0 0 0 1px rgba(184, 240, 207, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    mix-blend-mode: soft-light;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8) 0.5px, transparent 0.7px),
+      radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.7px),
+      radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.5) 0.5px, transparent 0.7px);
+    background-size: 18px 18px, 22px 22px, 26px 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
