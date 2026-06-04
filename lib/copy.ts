@@ -136,11 +136,11 @@ export const copy: Record<Locale, PageCopy> = {
   en: {
     languageLabel: "Language",
     nav: [
-      { label: "Library", href: "#library" },
-      { label: "Reader", href: "#reader" },
-      { label: "Notes", href: "#notes" },
-      { label: "AI Assistant", href: "#assistant" },
-      { label: "Pricing", href: "#pricing" }
+      { label: "Library", href: "/library" },
+      { label: "Reader", href: "/reader" },
+      { label: "Notes", href: "/notes" },
+      { label: "AI Assistant", href: "/assistant" },
+      { label: "Pricing", href: "/pricing" }
     ],
     actions: {
       signIn: "Sign In",
@@ -157,8 +157,7 @@ export const copy: Record<Locale, PageCopy> = {
       trust: "Built for researchers, students, engineers, and deep readers.",
       metrics: [
         { value: "PDF + DOI", label: "Import pipeline" },
-        { value: "Focus mode", label: "Readable paper UI" },
-        { value: "Private notes", label: "Personal knowledge base" }
+        { value: "Focus mode", label: "Readable paper UI" }
       ]
     },
     trust: {
@@ -298,15 +297,15 @@ export const copy: Record<Locale, PageCopy> = {
       resourcesTitle: "Resources",
       socialTitle: "Social",
       productLinks: [
-        { label: "Library", href: "#library" },
-        { label: "Reader", href: "#reader" },
-        { label: "Notes", href: "#notes" },
-        { label: "Pricing", href: "#pricing" }
+        { label: "Library", href: "/library" },
+        { label: "Reader", href: "/reader" },
+        { label: "Notes", href: "/notes" },
+        { label: "Pricing", href: "/pricing" }
       ],
       resourceLinks: [
-        { label: "Documentation", href: "#showcase" },
-        { label: "Guide to Highlights", href: "#workflow" },
-        { label: "Research Workflows", href: "#benefits" }
+        { label: "Documentation", href: "/showcase" },
+        { label: "Guide to Highlights", href: "/workflow" },
+        { label: "Research Workflows", href: "/benefits" }
       ],
       socialLinks: [
         { label: "GitHub", href: "#" },
@@ -416,11 +415,11 @@ export const copy: Record<Locale, PageCopy> = {
   zh: {
     languageLabel: "语言",
     nav: [
-      { label: "文献库", href: "#library" },
-      { label: "阅读器", href: "#reader" },
-      { label: "笔记", href: "#notes" },
-      { label: "AI 助手", href: "#assistant" },
-      { label: "定价", href: "#pricing" }
+      { label: "文献库", href: "/library" },
+      { label: "阅读器", href: "/reader" },
+      { label: "笔记", href: "/notes" },
+      { label: "AI 助手", href: "/assistant" },
+      { label: "定价", href: "/pricing" }
     ],
     actions: {
       signIn: "登录",
@@ -437,8 +436,7 @@ export const copy: Record<Locale, PageCopy> = {
       trust: "为研究者、学生、工程师与深度阅读者而设计。",
       metrics: [
         { value: "PDF + DOI", label: "一键导入" },
-        { value: "专注模式", label: "清晰阅读界面" },
-        { value: "私人笔记", label: "个人知识库" }
+        { value: "专注模式", label: "清晰阅读界面" }
       ]
     },
     trust: {
@@ -578,15 +576,15 @@ export const copy: Record<Locale, PageCopy> = {
       resourcesTitle: "资源",
       socialTitle: "社交",
       productLinks: [
-        { label: "文献库", href: "#library" },
-        { label: "阅读器", href: "#reader" },
-        { label: "笔记", href: "#notes" },
-        { label: "定价", href: "#pricing" }
+        { label: "文献库", href: "/library" },
+        { label: "阅读器", href: "/reader" },
+        { label: "笔记", href: "/notes" },
+        { label: "定价", href: "/pricing" }
       ],
       resourceLinks: [
-        { label: "产品说明", href: "#showcase" },
-        { label: "高亮方法", href: "#workflow" },
-        { label: "研究流程", href: "#benefits" }
+        { label: "产品说明", href: "/showcase" },
+        { label: "高亮方法", href: "/workflow" },
+        { label: "研究流程", href: "/benefits" }
       ],
       socialLinks: [
         { label: "GitHub", href: "#" },

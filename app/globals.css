@@ -4,22 +4,39 @@
 
 :root {
   color-scheme: dark;
-  --bg-primary: #06110c;
-  --bg-secondary: #0b1711;
-  --bg-tertiary: #102119;
-  --surface-glass: rgba(233, 248, 236, 0.08);
-  --surface-glass-strong: rgba(233, 248, 236, 0.13);
+  --color-bg-deep: #07110D;
+  --color-bg-forest: #0D1A15;
+  --color-bg-moss: #172A21;
+  --color-bg-panel: #1C2F25;
+  --color-primary: #52B788;
+  --color-primary-soft: #95D5B2;
+  --color-sage: #84A98C;
+  --color-mint: #B7F3D2;
+  --color-cyan-green: #7DE2D1;
+  --color-text-primary: #F5F7F6;
+  --color-text-secondary: rgba(245, 247, 246, 0.78);
+  --color-text-muted: rgba(245, 247, 246, 0.55);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-highlight: rgba(255, 255, 255, 0.22);
+  --glass-shadow: rgba(2, 12, 8, 0.28);
+  /* Legacy aliases */
+  --bg-primary: var(--color-bg-deep);
+  --bg-secondary: var(--color-bg-forest);
+  --bg-tertiary: var(--color-bg-moss);
+  --surface-glass: var(--glass-bg);
+  --surface-glass-strong: rgba(255, 255, 255, 0.13);
   --surface-panel: rgba(10, 23, 16, 0.76);
   --surface-panel-strong: rgba(14, 31, 21, 0.9);
-  --border-soft: rgba(233, 248, 236, 0.12);
-  --border-strong: rgba(184, 240, 207, 0.24);
-  --text-primary: #eef8f1;
+  --border-soft: var(--glass-border);
+  --border-strong: rgba(183, 243, 210, 0.24);
+  --text-primary: var(--color-text-primary);
   --text-secondary: #d1dfd4;
   --text-muted: #8aa091;
-  --mint: #b8f0cf;
-  --sage: #84b998;
-  --emerald: #6fd2a2;
-  --cyan-green: #7bd5c9;
+  --mint: var(--color-mint);
+  --sage: var(--color-sage);
+  --emerald: var(--color-primary);
+  --cyan-green: var(--color-cyan-green);
 }
 
 * {
@@ -36,11 +53,11 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at top, rgba(127, 178, 142, 0.18), transparent 40%),
-    radial-gradient(circle at 20% 20%, rgba(111, 210, 162, 0.1), transparent 28%),
-    radial-gradient(circle at 80% 10%, rgba(123, 213, 201, 0.08), transparent 24%),
-    linear-gradient(180deg, #07120d 0%, #06110c 52%, #091610 100%);
-  color: var(--text-primary);
+    radial-gradient(circle at top, rgba(132, 169, 140, 0.18), transparent 40%),
+    radial-gradient(circle at 20% 20%, rgba(82, 183, 136, 0.1), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(125, 226, 209, 0.08), transparent 24%),
+    linear-gradient(180deg, #07110D 0%, #0D1A15 52%, #091610 100%);
+  color: var(--color-text-primary);
   font-family:
     "Plus Jakarta Sans",
     "Avenir Next",
@@ -158,6 +175,29 @@ select {
       radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.7px),
       radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.5) 0.5px, transparent 0.7px);
     background-size: 18px 18px, 22px 22px, 26px 26px;
+  }
+}
+
+@keyframes particle-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(12px, -18px);
+  }
+  50% {
+    transform: translate(-6px, -8px);
+  }
+  75% {
+    transform: translate(-14px, 14px);
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-panel,
+  .glass-card {
+    background: rgba(24, 41, 32, 0.82);
   }
 }
 

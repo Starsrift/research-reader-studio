@@ -10,20 +10,27 @@ const config: Config = {
     extend: {
       colors: {
         forest: {
-          950: "#06110c",
-          900: "#0b1711",
-          850: "#102119",
-          800: "#173126"
+          950: "#07110D",
+          900: "#0D1A15",
+          850: "#172A21",
+          800: "#1C2F25"
+        },
+        primary: {
+          DEFAULT: "#52B788",
+          soft: "#95D5B2",
+          400: "#52B788",
+          500: "#3EA072"
         },
         sage: {
           200: "#cde4d2",
           300: "#b6d4bf",
-          400: "#7fb28e",
-          500: "#5f9170"
+          400: "#84A98C",
+          500: "#6B8F73"
         },
         mint: {
-          300: "#b8f0cf",
-          400: "#8adbb8"
+          200: "#B7F3D2",
+          300: "#B7F3D2",
+          400: "#95D5B2"
         }
       },
       boxShadow: {
@@ -33,7 +40,7 @@ const config: Config = {
       },
       backgroundImage: {
         haze:
-          "radial-gradient(circle at top, rgba(127, 178, 142, 0.18), transparent 44%), radial-gradient(circle at 30% 20%, rgba(111, 210, 162, 0.12), transparent 36%), linear-gradient(180deg, rgba(4, 12, 8, 0.92), rgba(6, 17, 12, 1))"
+          "radial-gradient(circle at top, rgba(132, 169, 140, 0.18), transparent 44%), radial-gradient(circle at 30% 20%, rgba(82, 183, 136, 0.12), transparent 36%), linear-gradient(180deg, rgba(7, 17, 13, 0.92), rgba(13, 26, 21, 1))"
       }
     }
   },

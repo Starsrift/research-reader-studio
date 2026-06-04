@@ -88,13 +88,10 @@ mise exec node@20.20.2 -- npm run start
 ## 首页包含的内容
 
 - sticky glass navbar
-- 带论文阅读器产品 mockup 的 Hero 区
-- 信任与可信度展示区
-- 6 张产品功能卡片
-- 分步骤 research workflow
-- 更完整的产品展示区
-- 面向阅读效率与知识整理的 benefits 区
-- 最终 CTA 与简洁页脚
+- 带动态玻璃研究场景的 Hero 区
+- 暂不跳转的 Hero CTA 按钮
+- 两个核心功能按钮：PDF + DOI 与专注模式
+- 简洁页脚，包含 Product、Resources 与 Social 链接
 
 ## 目录结构
 
@@ -103,8 +100,6 @@ research-reader-studio/
 ├─ app/                      # App Router 入口与全局样式
 ├─ components/               # 可复用页面组件与产品 mockup 组件
 ├─ lib/                      # 文案与轻量数据模块
-├─ assets/                   # 静态素材
-├─ docs/                     # 补充设计文档
 ├─ .mise.toml                # mise 运行时固定配置
 ├─ package.json              # 脚本与依赖元信息
 └─ README.md
@@ -116,18 +111,10 @@ research-reader-studio/
 - `app/layout.tsx`: 应用根布局
 - `app/globals.css`: 全局样式与玻璃拟态基础样式
 - `components/home-page.tsx`: 首页整体结构
-- `components/reader-workspace.tsx`: 论文阅读器核心 mockup
+- `components/home/`: 导航、Hero、按钮与玻璃场景组件
 - `components/ambient-background.tsx`: 背景环境动效层
 - `lib/copy.ts`: 中英文文案数据
 
 ## 说明
 
 当前主实现是 `app/` 目录下的 Next.js 版本。
-
-仓库中仍然保留了一组更早期的静态原型文件：
-
-- `index.html`
-- `styles.css`
-- `script.js`
-
-它们可以视为前期实验稿；当前推荐以 App Router 版本为主。

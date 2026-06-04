@@ -107,13 +107,10 @@ mise exec node@20.20.2 -- npm run start
 ## Features Shown On The Homepage
 
 - sticky glass navbar
-- immersive hero section with research-reader product mockup
-- trust / credibility strip
-- 6 product feature cards
-- step-based research workflow section
-- detailed product showcase
-- benefits section focused on reading and knowledge work
-- final CTA and minimal footer
+- immersive hero section with a dynamic glass research scene
+- non-navigating hero CTA buttons
+- two focused feature buttons: PDF + DOI and Focus mode
+- minimal footer with Product, Resources, and Social links
 
 ## Project Structure
 
@@ -122,8 +119,6 @@ research-reader-studio/
 ├─ app/                      # App Router entry and global styles
 ├─ components/               # Reusable homepage and mockup components
 ├─ lib/                      # Copy and lightweight content data
-├─ assets/                   # Static assets
-├─ docs/                     # Supporting notes
 ├─ .mise.toml                # Pinned runtime via mise
 ├─ package.json              # Scripts and dependency metadata
 └─ README.md
@@ -135,18 +130,10 @@ research-reader-studio/
 - `app/layout.tsx`: app shell
 - `app/globals.css`: global styling and glassmorphism primitives
 - `components/home-page.tsx`: homepage structure and sections
-- `components/reader-workspace.tsx`: main product reader mockup
+- `components/home/`: navbar, hero, buttons, and glass scene components
 - `components/ambient-background.tsx`: ambient animated background layer
 - `lib/copy.ts`: bilingual copy data
 
 ## Notes
 
 The main implementation is the Next.js version under `app/`.
-
-Legacy static prototype files are still kept in the repository:
-
-- `index.html`
-- `styles.css`
-- `script.js`
-
-They are useful as an earlier exploration artifact, but the App Router implementation is the current primary version.

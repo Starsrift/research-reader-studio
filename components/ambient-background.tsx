@@ -5,21 +5,21 @@ import { motion, useReducedMotion } from "framer-motion";
 const blobs = [
   {
     className:
-      "left-[-12rem] top-[-8rem] h-[26rem] w-[26rem] bg-[radial-gradient(circle,rgba(111,210,162,0.24)_0%,rgba(111,210,162,0)_68%)]",
-    animate: { x: [0, 70, 20, 0], y: [0, 40, 110, 0], scale: [1, 1.08, 0.96, 1] },
-    duration: 34
+      "left-[-12rem] top-[-8rem] h-[26rem] w-[26rem] bg-[radial-gradient(circle,rgba(82,183,136,0.22)_0%,rgba(82,183,136,0)_68%)]",
+    animate: { x: [0, 50, 14, 0], y: [0, 30, 80, 0], scale: [1, 1.06, 0.97, 1] },
+    duration: 24
   },
   {
     className:
-      "right-[-10rem] top-[8rem] h-[24rem] w-[24rem] bg-[radial-gradient(circle,rgba(123,213,201,0.18)_0%,rgba(123,213,201,0)_72%)]",
-    animate: { x: [0, -50, -10, 0], y: [0, 60, 20, 0], scale: [1, 0.94, 1.05, 1] },
-    duration: 38
+      "right-[-10rem] top-[8rem] h-[24rem] w-[24rem] bg-[radial-gradient(circle,rgba(125,226,209,0.16)_0%,rgba(125,226,209,0)_72%)]",
+    animate: { x: [0, -40, -8, 0], y: [0, 45, 16, 0], scale: [1, 0.95, 1.04, 1] },
+    duration: 28
   },
   {
     className:
-      "bottom-[-10rem] left-[22%] h-[28rem] w-[28rem] bg-[radial-gradient(circle,rgba(184,240,207,0.13)_0%,rgba(184,240,207,0)_72%)]",
-    animate: { x: [0, 40, -10, 0], y: [0, -45, -15, 0], scale: [1, 1.1, 0.98, 1] },
-    duration: 42
+      "bottom-[-10rem] left-[22%] h-[28rem] w-[28rem] bg-[radial-gradient(circle,rgba(183,243,210,0.11)_0%,rgba(183,243,210,0)_72%)]",
+    animate: { x: [0, 30, -8, 0], y: [0, -35, -10, 0], scale: [1, 1.08, 0.98, 1] },
+    duration: 20
   }
 ];
 
