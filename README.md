@@ -57,10 +57,29 @@ This repository uses `mise` for runtime isolation.
 ```bash
 git clone git@github.com:Starsrift/research-reader-studio.git
 cd research-reader-studio
+## 方式一：mise（推荐）
+
+```bash
 mise trust
 mise install
 mise exec node@20.20.2 -- npm ci
 mise exec node@20.20.2 -- npm run dev
+```
+
+## 方式二：pnpm
+
+```bash
+# 通过 npm install -g pnpm@latest 安装 pnpm
+pnpm install
+pnpm dev
+```
+
+## 方式三：npm
+
+```bash
+npm ci
+npm run dev
+```
 ```
 
 Open:
