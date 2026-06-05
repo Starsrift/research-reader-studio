@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AmbientBackground } from "@/components/ambient-background";
 import { BrandMark } from "@/components/icons";
 import { CssGlassScene } from "@/components/home/CssGlassScene";
@@ -11,30 +11,7 @@ import { HeroBadge } from "@/components/home/HeroBadge";
 import { HeroContent, HeroSection, HeroVisual } from "@/components/home/HeroSection";
 import { Navbar } from "@/components/home/Navbar";
 import { RightSceneShell } from "@/components/home/RightSceneShell";
-import { copy } from "@/lib/copy";
-
-const content = copy.zh;
-
-const footer = {
-  description:
-    "Sylva is a premium reading platform for understanding papers, building notes, and keeping research knowledge usable over time.",
-  productLinks: [
-    { label: "Library", href: "/library" },
-    { label: "Reader", href: "/reader" },
-    { label: "Notes", href: "/notes" },
-    { label: "Pricing", href: "/pricing" }
-  ],
-  resourceLinks: [
-    { label: "Documentation", href: "#" },
-    { label: "Guide to Highlights", href: "#" },
-    { label: "Research Workflows", href: "#" }
-  ],
-  socialLinks: [
-    { label: "GitHub", href: "#" },
-    { label: "X / Twitter", href: "#" },
-    { label: "LinkedIn", href: "#" }
-  ]
-};
+import { copy, type Locale } from "@/lib/copy";
 
 function FooterLink({ href, label }: { href: string; label: string }) {
   if (href.startsWith("/")) {
@@ -79,7 +56,8 @@ function FooterColumn({
   );
 }
 
-function Footer() {
+function Footer({ locale }: { locale: Locale }) {
+  const f = copy[locale].footer;
   return (
     <footer className="section-shell border-t border-white/10 pb-12 pt-10 text-sm">
       <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,0.7fr))]">
@@ -96,22 +74,25 @@ function Footer() {
             </div>
           </div>
           <p className="mt-4 max-w-sm leading-7 text-[color:var(--color-text-secondary)]">
-            {footer.description}
+            {f.description}
           </p>
         </div>
 
-        <FooterColumn title="Product" links={footer.productLinks} />
-        <FooterColumn title="Resources" links={footer.resourceLinks} />
-        <FooterColumn title="Social" links={footer.socialLinks} />
+        <FooterColumn title={f.productTitle} links={f.productLinks} />
+        <FooterColumn title={f.resourcesTitle} links={f.resourceLinks} />
+        <FooterColumn title={f.socialTitle} links={f.socialLinks} />
       </div>
     </footer>
   );
 }
 
 export function HomePage() {
+  const [locale, setLocale] = useState<Locale>("zh");
+  const content = copy[locale];
+
   useEffect(() => {
-    document.documentElement.lang = "zh-CN";
-  }, []);
+    document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
+  }, [locale]);
 
   return (
     <main className="relative isolate min-h-screen overflow-hidden bg-[color:var(--color-bg-deep)]">
@@ -120,6 +101,8 @@ export function HomePage() {
       <div className="absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(circle_at_top,rgba(183,243,210,0.14),transparent_46%)]" />
 
       <Navbar
+        locale={locale}
+        onLocaleChange={setLocale}
         content={{
           languageLabel: content.languageLabel,
           nav: content.nav,
@@ -130,31 +113,43 @@ export function HomePage() {
       <HeroSection>
         <HeroContent>
           <HeroBadge text={content.hero.eyebrow} />
-          <h1 className="max-w-3xl text-5xl font-semibold leading-[1.08] tracking-normal text-white text-glow sm:text-6xl lg:text-[3.5rem] xl:text-[4.25rem]">
-            <span className="block">在一个智能工作台里，</span>
-            <span className="block">完成论文阅读、</span>
-            <span className="block">理解与知识整理。</span>
+          <h1 className="max-w-[800px] text-[clamp(2.8rem,5.5vw,5rem)] font-black leading-[1.0] tracking-[-0.04em] text-white text-glow">
+            {locale === "zh" ? (
+              <>
+                <span className="block">在一个智能工作</span>
+                <span className="block">台里，完成论文</span>
+                <span className="block">阅读、理解与知</span>
+                <span className="block">识整理。</span>
+              </>
+            ) : (
+              <>
+                <span className="block">Read, understand,</span>
+                <span className="block">and organize</span>
+                <span className="block">research papers</span>
+                <span className="block">in one workspace.</span>
+              </>
+            )}
           </h1>
-          <p className="body-copy mt-6 max-w-2xl">{content.hero.description}</p>
+          <p className="body-copy mt-6 max-w-2xl text-base leading-8 sm:text-lg">{content.hero.description}</p>
 
           <HeroActions
             primaryLabel={content.actions.startReading}
             secondaryLabel={content.actions.viewDemo}
           />
 
-          <p className="mt-5 text-sm text-[color:var(--color-text-muted)]">{content.hero.trust}</p>
+          <p className="mt-5 text-sm text-[color:var(--color-text-muted)] sm:text-base">{content.hero.trust}</p>
 
           <FeatureChips metrics={content.hero.metrics} />
         </HeroContent>
 
         <HeroVisual>
           <RightSceneShell>
-            <CssGlassScene />
+            <CssGlassScene locale={locale} />
           </RightSceneShell>
         </HeroVisual>
       </HeroSection>
 
-      <Footer />
+      <Footer locale={locale} />
     </main>
   );
 }

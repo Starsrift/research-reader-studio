@@ -25,7 +25,9 @@ function NavButton({
 }
 
 export function Navbar({
-  content
+  content,
+  locale,
+  onLocaleChange
 }: {
   content: {
     languageLabel: string;
@@ -33,10 +35,13 @@ export function Navbar({
     actions: {
       signIn: string;
       startReading: string;
+      viewDemo: string;
       switchToEnglish: string;
       switchToChinese: string;
     };
   };
+  locale: "en" | "zh";
+  onLocaleChange: (locale: "en" | "zh") => void;
 }) {
   return (
     <div className="section-shell sticky top-4 z-50 pt-4">
@@ -79,14 +84,23 @@ export function Navbar({
             >
               <button
                 type="button"
-                className="rounded-full px-3 py-1.5 text-xs font-semibold text-[color:var(--color-text-muted)] transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)]"
+                onClick={() => onLocaleChange("en")}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] ${
+                  locale === "en"
+                    ? "bg-[rgba(183,243,210,0.16)] text-[color:var(--color-mint)]"
+                    : "text-[color:var(--color-text-muted)] hover:text-white"
+                }`}
               >
                 {content.actions.switchToEnglish}
               </button>
               <button
                 type="button"
-                aria-pressed="true"
-                className="rounded-full bg-[rgba(183,243,210,0.16)] px-3 py-1.5 text-xs font-semibold text-[color:var(--color-mint)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)]"
+                onClick={() => onLocaleChange("zh")}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] ${
+                  locale === "zh"
+                    ? "bg-[rgba(183,243,210,0.16)] text-[color:var(--color-mint)]"
+                    : "text-[color:var(--color-text-muted)] hover:text-white"
+                }`}
               >
                 {content.actions.switchToChinese}
               </button>

@@ -130,7 +130,7 @@ select {
   }
 
   .section-shell {
-    @apply mx-auto w-full max-w-7xl px-5 md:px-8 xl:px-10;
+    @apply mx-auto w-full max-w-[88rem] px-5 md:px-8 xl:px-12;
   }
 
   .section-title {
