@@ -122,7 +122,7 @@ export function AppleStyleText({ locale }: { locale: Locale }) {
         </motion.p>
 
         {/* 主文字动画区域 */}
-        <div className="h-[1.2em] overflow-visible">
+        <div className="overflow-visible py-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={`${locale}-${currentIndex}`}
@@ -138,7 +138,7 @@ export function AppleStyleText({ locale }: { locale: Locale }) {
         <AnimatePresence mode="wait">
           <motion.p
             key={`sub-${locale}-${currentIndex}`}
-            className="mt-4 text-sm tracking-[0.15em] text-[color:var(--color-text-muted)]"
+            className="mt-2 text-sm tracking-[0.15em] text-[color:var(--color-text-muted)]"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}

@@ -15,7 +15,7 @@ export function FeatureChips({ metrics }: { metrics: Metric[] }) {
           key={metric.label}
           type="button"
           whileHover={cardHover}
-          className="glass-card rounded-[1.4rem] px-4 py-4 text-left transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-bg-deep)] active:scale-[0.98]"
+          className="glass-card rounded-[1.4rem] px-4 py-4 text-left transition duration-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-bg-deep)] active:scale-[0.98]"
         >
           <div className="text-sm font-semibold text-[color:var(--color-mint)] sm:text-base">
             {metric.value}
