@@ -38,3 +38,5 @@ pnpm-debug.log*
 # local deployment / cache
 .vercel/
 .turbo/
+
+pnpm-workspace.yaml

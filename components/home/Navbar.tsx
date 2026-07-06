@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { BrandMark } from "@/components/icons";
+import { useAuth } from "@/components/auth-provider";
 
 function NavButton({
   children,
@@ -43,6 +44,8 @@ export function Navbar({
   locale: "en" | "zh";
   onLocaleChange: (locale: "en" | "zh") => void;
 }) {
+  const { user, logout } = useAuth();
+
   return (
     <div className="section-shell sticky top-4 z-50 pt-4">
       <div className="glass-panel rounded-[1.7rem] px-4 py-3 sm:px-5">
@@ -105,12 +108,27 @@ export function Navbar({
                 {content.actions.switchToChinese}
               </button>
             </div>
-            <button
-              type="button"
-              className="hidden rounded-full border border-white/10 px-4 py-2 text-sm text-[color:var(--color-text-secondary)] transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] sm:inline-flex"
-            >
-              {content.actions.signIn}
-            </button>
+            {user ? (
+              <div className="hidden items-center gap-3 sm:flex">
+                <span className="text-sm text-[color:var(--color-mint)]">
+                  {user.username}
+                </span>
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="rounded-full border border-white/10 px-4 py-2 text-sm text-[color:var(--color-text-secondary)] transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)]"
+                >
+                  退出
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className="hidden rounded-full border border-white/10 px-4 py-2 text-sm text-[color:var(--color-text-secondary)] transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] sm:inline-flex"
+              >
+                {content.actions.signIn}
+              </Link>
+            )}
             <NavButton>{content.actions.startReading}</NavButton>
           </div>
         </div>

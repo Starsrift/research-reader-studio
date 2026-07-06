@@ -43,6 +43,7 @@ The page focuses on:
 - TypeScript
 - Tailwind CSS
 - Framer Motion
+- MongoDB (User Authentication)
 
 ## Environment
 
@@ -57,7 +58,9 @@ This repository uses `mise` for runtime isolation.
 ```bash
 git clone git@github.com:Starsrift/research-reader-studio.git
 cd research-reader-studio
-## 方式一：mise（推荐）
+```
+
+### Option 1: mise (Recommended)
 
 ```bash
 mise trust
@@ -66,20 +69,18 @@ mise exec node@20.20.2 -- npm ci
 mise exec node@20.20.2 -- npm run dev
 ```
 
-## 方式二：pnpm
+### Option 2: pnpm
 
 ```bash
-# 通过 npm install -g pnpm@latest 安装 pnpm
 pnpm install
 pnpm dev
 ```
 
-## 方式三：npm
+### Option 3: npm
 
 ```bash
 npm ci
 npm run dev
-```
 ```
 
 Open:
@@ -111,14 +112,24 @@ mise exec node@20.20.2 -- npm run start
 - non-navigating hero CTA buttons
 - two focused feature buttons: PDF + DOI and Focus mode
 - minimal footer with Product, Resources, and Social links
+- User registration/login (MongoDB)
+- Login state persistence (localStorage)
+- Username display in navbar after login
 
 ## Project Structure
 
 ```text
 research-reader-studio/
 ├─ app/                      # App Router entry and global styles
+│  ├─ api/auth/             # Auth API (login/register)
+│  ├─ login/                # Login page
+│  └─ register/             # Register page
 ├─ components/               # Reusable homepage and mockup components
+│  ├─ auth-provider.tsx     # User auth state management
+│  ├─ login-form.tsx        # Login form
+│  └─ register-form.tsx     # Register form
 ├─ lib/                      # Copy and lightweight content data
+│  └─ mongodb.ts            # MongoDB connection config
 ├─ .mise.toml                # Pinned runtime via mise
 ├─ package.json              # Scripts and dependency metadata
 └─ README.md
@@ -132,7 +143,28 @@ research-reader-studio/
 - `components/home-page.tsx`: homepage structure and sections
 - `components/home/`: navbar, hero, buttons, and glass scene components
 - `components/ambient-background.tsx`: ambient animated background layer
+- `components/auth-provider.tsx`: user authentication state management
+- `components/login-form.tsx`: login form component
+- `components/register-form.tsx`: register form component
 - `lib/copy.ts`: bilingual copy data
+- `lib/mongodb.ts`: MongoDB database connection
+- `app/api/auth/login/route.ts`: login API
+- `app/api/auth/register/route.ts`: register API
+
+## Database
+
+This project uses MongoDB to store user data.
+
+**Configuration:**
+- Default connection: `mongodb://localhost:27017`
+- Database name: `sylva`
+- Collection: `users`
+
+**Environment Variables (Optional):**
+```bash
+MONGODB_URI=mongodb://localhost:27017
+MONGODB_DB=sylva
+```
 
 ## Notes
 

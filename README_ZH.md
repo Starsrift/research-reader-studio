@@ -14,9 +14,9 @@
 ## 项目简介
 
 `research-reader-studio` 是一个前端概念项目，用来展示一个 AI 驱动的论文阅读产品首页。  
-这个页面围绕“导入论文、专注阅读、AI 提问、保存笔记、构建研究知识库”这一完整链路来组织产品叙事。
+这个页面围绕"导入论文、专注阅读、AI 提问、保存笔记、构建研究知识库"这一完整链路来组织产品叙事。
 
-它的设计目标不是做一个泛化的 AI SaaS 首页，而是明确传达“论文阅读与研究理解工具”的产品气质：
+它的设计目标不是做一个泛化的 AI SaaS 首页，而是明确传达"论文阅读与研究理解工具"的产品气质：
 
 - 深森林绿 / 苔藓绿 / 暗翡翠色系
 - 玻璃拟态与半透明多层浮板
@@ -43,6 +43,7 @@
 - TypeScript
 - Tailwind CSS
 - Framer Motion
+- MongoDB（用户认证）
 
 ## 运行环境
 
@@ -57,10 +58,29 @@
 ```bash
 git clone git@github.com:Starsrift/research-reader-studio.git
 cd research-reader-studio
+```
+
+### 方式一：mise（推荐）
+
+```bash
 mise trust
 mise install
 mise exec node@20.20.2 -- npm ci
 mise exec node@20.20.2 -- npm run dev
+```
+
+### 方式二：pnpm
+
+```bash
+pnpm install
+pnpm dev
+```
+
+### 方式三：npm
+
+```bash
+npm ci
+npm run dev
 ```
 
 启动后访问：
@@ -92,14 +112,24 @@ mise exec node@20.20.2 -- npm run start
 - 暂不跳转的 Hero CTA 按钮
 - 两个核心功能按钮：PDF + DOI 与专注模式
 - 简洁页脚，包含 Product、Resources 与 Social 链接
+- 用户注册/登录功能（MongoDB）
+- 登录状态持久化（localStorage）
+- 登录后导航栏显示用户名
 
 ## 目录结构
 
 ```text
 research-reader-studio/
 ├─ app/                      # App Router 入口与全局样式
+│  ├─ api/auth/             # 认证 API（登录/注册）
+│  ├─ login/                # 登录页面
+│  └─ register/             # 注册页面
 ├─ components/               # 可复用页面组件与产品 mockup 组件
+│  ├─ auth-provider.tsx     # 用户状态管理
+│  ├─ login-form.tsx        # 登录表单
+│  └─ register-form.tsx     # 注册表单
 ├─ lib/                      # 文案与轻量数据模块
+│  └─ mongodb.ts            # MongoDB 连接配置
 ├─ .mise.toml                # mise 运行时固定配置
 ├─ package.json              # 脚本与依赖元信息
 └─ README.md
@@ -113,7 +143,28 @@ research-reader-studio/
 - `components/home-page.tsx`: 首页整体结构
 - `components/home/`: 导航、Hero、按钮与玻璃场景组件
 - `components/ambient-background.tsx`: 背景环境动效层
+- `components/auth-provider.tsx`: 用户认证状态管理
+- `components/login-form.tsx`: 登录表单组件
+- `components/register-form.tsx`: 注册表单组件
 - `lib/copy.ts`: 中英文文案数据
+- `lib/mongodb.ts`: MongoDB 数据库连接
+- `app/api/auth/login/route.ts`: 登录 API
+- `app/api/auth/register/route.ts`: 注册 API
+
+## 数据库
+
+本项目使用 MongoDB 存储用户数据。
+
+**配置：**
+- 默认连接：`mongodb://localhost:27017`
+- 数据库名：`sylva`
+- 集合：`users`
+
+**环境变量（可选）：**
+```bash
+MONGODB_URI=mongodb://localhost:27017
+MONGODB_DB=sylva
+```
 
 ## 说明
 
